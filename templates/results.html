@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Election Results</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .box {
+            width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th {
+            background: #1769e0;
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #1769e0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Election Results</h1>
+
+    <h2>Total Votes: {{ total_votes }}</h2>
+
+    <table>
+
+        <tr>
+            <th>Candidate</th>
+            <th>Party</th>
+            <th>Votes</th>
+        </tr>
+
+        {% for name, candidate in candidates.items() %}
+
+        <tr>
+
+            <td>{{ name }}</td>
+
+            <td>{{ candidate.party }}</td>
+
+            <td>{{ candidate.votes }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <a class="btn" href="{{ url_for('index') }}">
+        ← Back to Home
+    </a>
+
+</div>
+
+</body>
+</html>

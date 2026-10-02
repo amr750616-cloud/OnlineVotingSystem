@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .box {
+            width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th {
+            background: #1769e0;
+            color: white;
+        }
+
+        th, td {
+            padding: 14px;
+            border: 1px solid #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 15px;
+            padding: 12px 25px;
+            background: #1769e0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .logout {
+            background: #d62828;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Admin Dashboard</h1>
+
+    <h2>Total Votes: {{ total_votes }}</h2>
+
+    <h2>Election Results</h2>
+
+    <table>
+
+        <tr>
+            <th>Candidate</th>
+            <th>Party</th>
+            <th>Votes</th>
+        </tr>
+
+        {% for name, candidate in candidates.items() %}
+
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ candidate.party }}</td>
+            <td>{{ candidate.votes }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <h2>Registered Voters</h2>
+
+    <table>
+
+        <tr>
+            <th>Voter ID</th>
+            <th>Name</th>
+            <th>Voted</th>
+        </tr>
+
+        {% for voter_id, voter in voters.items() %}
+
+        <tr>
+            <td>{{ voter_id }}</td>
+            <td>{{ voter.name }}</td>
+
+            <td>
+                {% if voter.has_voted %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <a class="btn" href="{{ url_for('results') }}">
+        View Results
+    </a>
+
+    <a class="btn logout" href="{{ url_for('logout') }}">
+        Logout
+    </a>
+
+</div>
+
+</body>
+</html>

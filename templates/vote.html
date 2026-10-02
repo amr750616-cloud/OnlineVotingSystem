@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cast Your Vote</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .box {
+            width: 600px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .candidate {
+            padding: 18px;
+            margin: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        button {
+            background: #1769e0;
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Cast Your Vote</h1>
+
+    {% if already_voted %}
+
+        <p class="warning">
+            You have already voted.
+        </p>
+
+        <a href="{{ url_for('results') }}">
+            View Results
+        </a>
+
+    {% else %}
+
+        <form method="POST">
+
+            {% for name, candidate in candidates.items() %}
+
+                <div class="candidate">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="candidate"
+                            value="{{ name }}"
+                            required
+                        >
+
+                        <strong>{{ name }}</strong>
+
+                        <br>
+
+                        Party: {{ candidate.party }}
+
+                    </label>
+
+                </div>
+
+            {% endfor %}
+
+            <br>
+
+            <button type="submit">
+                Submit Vote
+            </button>
+
+        </form>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

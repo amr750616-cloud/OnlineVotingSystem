@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .box {
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            background: #1769e0;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px;
+        }
+
+        .logout {
+            background: #d62828;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Voter Dashboard</h1>
+
+    <h2>Welcome, {{ voter.name }}</h2>
+
+    {% if voter.has_voted %}
+
+        <p>You have already voted.</p>
+
+        <a class="btn" href="{{ url_for('results') }}">
+            View Results
+        </a>
+
+    {% else %}
+
+        <p>You have not voted yet.</p>
+
+        <a class="btn" href="{{ url_for('vote') }}">
+            Vote Now
+        </a>
+
+    {% endif %}
+
+    <br>
+
+    <a class="btn logout" href="{{ url_for('logout') }}">
+        Logout
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Voting System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f6f9;
+            padding-top: 120px;
+        }
+
+        h1 {
+            color: #172b75;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 15px;
+            background: #1769e0;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        .btn:hover {
+            background: #0d4fb8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Online Voting System</h1>
+
+    <p>Welcome to the Online Voting System</p>
+
+    <a class="btn" href="{{ url_for('voter_login') }}">
+        Voter Login
+    </a>
+
+    <a class="btn" href="{{ url_for('admin_login') }}">
+        Admin Login
+    </a>
+
+    <a class="btn" href="{{ url_for('results') }}">
+        View Results
+    </a>
+
+</body>
+</html>
